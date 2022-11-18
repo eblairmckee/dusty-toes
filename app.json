@@ -1,3 +1,7 @@
 {
-  "owner": "blairmckee"
+  "owner": "blairmckee",
+  "expo": {
+    "name": "Chorts",
+    "slug": "chorts"
+  }
 }
