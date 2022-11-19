@@ -2,14 +2,14 @@ import React from 'react';
 
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
-import { Box, Text } from 'native-base';
+import { Box, Heading } from 'native-base';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'LogIn'>;
 
-export const HomeScreen: React.FC<Props> = () => {
+export const LogInScreen: React.FC<Props> = () => {
   return (
     <Box flex={1} justifyContent="center" alignItems="center">
-      <Text fontSize="lg">Home</Text>
+      <Heading fontSize="lg">Log in</Heading>
     </Box>
   );
 };
