@@ -1,76 +1,17 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoggedOutScreen } from './screens/LoggedOut';
-import { HomeScreen } from './screens/Home';
-import { CheckinScreen } from './screens/Checkin';
+import 'react-native-gesture-handler';
 import { NativeBaseProvider } from 'native-base';
 import { theme } from './styles/theme';
-import { NavHeader } from './components/NavHeader';
-import { LogInScreen } from './screens/LogIn';
-import { SignUpScreen } from './screens/SignUp';
-import { useState } from 'react';
-import { Splash } from './components/Splash';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthenticatedUserProvider } from './providers/AuthenticatedUserProvider';
-
-const Stack = createNativeStackNavigator();
+import { RootNavigation } from './navigation/RootNavigation';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isAuthed, setIsAuthed] = useState<boolean>(true);
   return (
     <AuthenticatedUserProvider>
       <SafeAreaProvider>
-        {isLoading ? (
-          <Splash />
-        ) : (
-          <NativeBaseProvider theme={theme}>
-            <NavigationContainer>
-              <Stack.Navigator>
-                {isAuthed ? (
-                  <>
-                    <Stack.Screen
-                      name="Home"
-                      options={{
-                        header: () => <NavHeader />,
-                      }}
-                      component={HomeScreen}
-                    />
-                    <Stack.Screen
-                      name="Checkin"
-                      options={{
-                        header: () => <NavHeader />,
-                      }}
-                      component={CheckinScreen}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <Stack.Screen
-                      name="LoggedOut"
-                      options={{
-                        header: (props) => <NavHeader hidden {...props} />,
-                      }}
-                      component={LoggedOutScreen}
-                    />
-                    <Stack.Screen
-                      name="LogIn"
-                      options={{
-                        header: () => <NavHeader />,
-                      }}
-                      component={LogInScreen}
-                    />
-                    <Stack.Screen
-                      name="SignUp"
-                      options={{ title: '' }}
-                      component={SignUpScreen}
-                    />
-                  </>
-                )}
-              </Stack.Navigator>
-            </NavigationContainer>
-          </NativeBaseProvider>
-        )}
+        <NativeBaseProvider theme={theme}>
+          <RootNavigation />
+        </NativeBaseProvider>
       </SafeAreaProvider>
     </AuthenticatedUserProvider>
   );
