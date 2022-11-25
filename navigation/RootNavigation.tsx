@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Splash } from '../components/Splash';
 import { useAuthenticatedUserContext } from '../providers/AuthenticatedUserProvider';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { auth } from '../firebase';
 
 export const RootNavigation = () => {
   const { user, setUser } = useAuthenticatedUserContext();

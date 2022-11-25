@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { auth } from '../firebase';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link } from '@react-navigation/native';
 import { View } from '../components/View';

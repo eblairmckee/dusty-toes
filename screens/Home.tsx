@@ -4,7 +4,7 @@ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/navigation';
 import { Box, Button, Text } from 'native-base';
 import { signOut } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
+import { auth } from '../firebase';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 

@@ -14,7 +14,7 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { auth } from '../firebaseConfig';
+import { auth } from '../firebase';
 import { View } from '../components/View';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
