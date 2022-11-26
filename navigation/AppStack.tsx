@@ -1,4 +1,3 @@
-import { NavHeader } from '../components/NavHeader';
 import { LogInScreen } from '../screens/LogIn';
 import { SignUpScreen } from '../screens/SignUp';
 import { LoggedOutScreen } from '../screens/LoggedOut';
@@ -12,20 +11,20 @@ export const AppStack = () => {
       <Stack.Screen
         name="LoggedOut"
         options={{
-          header: (props) => <NavHeader hidden {...props} />,
+          headerShown: false,
         }}
         component={LoggedOutScreen}
       />
       <Stack.Screen
         name="LogIn"
         options={{
-          header: () => <NavHeader />,
+          headerShown: false,
         }}
         component={LogInScreen}
       />
       <Stack.Screen
         name="SignUp"
-        options={{ title: '' }}
+        options={{ title: '', headerShown: false }}
         component={SignUpScreen}
       />
     </Stack.Navigator>

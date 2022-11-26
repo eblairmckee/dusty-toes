@@ -1,4 +1,3 @@
-import { NavHeader } from '../components/NavHeader';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens/Home';
 import { CheckinScreen } from '../screens/Checkin';
@@ -11,14 +10,14 @@ export const AuthedStack = () => {
       <Stack.Screen
         name="Home"
         options={{
-          header: (props) => <NavHeader hidden {...props} />,
+          headerShown: false,
         }}
         component={HomeScreen}
       />
       <Stack.Screen
         name="CheckIn"
         options={{
-          header: (props) => <NavHeader />,
+          headerShown: false,
         }}
         component={CheckinScreen}
       />
