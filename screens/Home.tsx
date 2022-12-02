@@ -14,15 +14,11 @@ export type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 const fabOptions: Option[] = [
   {
     iconName: 'today',
-    to: 'Checkin',
-  },
-  {
-    iconName: 'pencil',
-    to: 'Edit',
+    to: 'CreateEntry',
   },
   {
     iconName: 'flag',
-    to: 'Goal',
+    to: 'CreateCategory',
   },
 ];
 

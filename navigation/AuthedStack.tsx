@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens/Home';
-import { CheckinScreen } from '../screens/Checkin';
+import { CreateEntryScreen } from '../screens/CreateEntry';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ export const AuthedStack = () => {
         options={{
           headerShown: false,
         }}
-        component={CheckinScreen}
+        component={CreateEntryScreen}
       />
     </Stack.Navigator>
   );

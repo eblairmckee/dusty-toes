@@ -3,10 +3,10 @@ export type RootStackParamList = {
   LogIn: undefined;
   SignUp: undefined;
   Home: { userId: string };
-  Checkin: undefined;
-  Edit: undefined;
-  EditCheckin: { itemId: string };
-  Goal: undefined;
+  CreateEntry: undefined;
+  EntryDetail: undefined;
+  CreateCategory: undefined;
+  CategoryDetail: undefined;
 };
 
 export type Routes = keyof RootStackParamList;

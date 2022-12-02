@@ -1,15 +1,9 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Routes } from '../../types/navigation';
-import { Box, IconButton, useDisclose, VStack } from 'native-base';
+import { IconButton, useDisclose, View, VStack } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { OptionButton } from './OptionButton';
-import { StyleSheet, View } from 'react-native';
-import Animated, {
-  useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring,
-} from 'react-native-reanimated';
+import { StyleSheet } from 'react-native';
 
 export type Option = {
   label?: string;
@@ -23,27 +17,14 @@ type FabProps = {
   size?: number;
 };
 
-const gap = 30;
 const defaultSize = 12;
 
 export const Fab: React.FC<FabProps> = ({ options, size = defaultSize }) => {
   const { isOpen, onToggle, onClose } = useDisclose();
-  const menuHeight = useSharedValue<number>(0);
 
-  const menuOnLayout = (event) => {
-    menuHeight.value = event.nativeEvent.layout.height;
-  };
-
-  const calculatedOffset = useDerivedValue(() => {
-    const offset = parseInt(menuHeight.value.toFixed(0)) * -1 - size - gap;
-    return offset;
-  });
-
-  const animatedMenuStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateY: calculatedOffset.value }],
-    };
-  }, [menuHeight]);
+  const handleFabPress = useCallback(() => {
+    onToggle();
+  }, []);
 
   return (
     <>
@@ -53,16 +34,13 @@ export const Fab: React.FC<FabProps> = ({ options, size = defaultSize }) => {
         color="#ffffff"
         borderRadius="full"
         bg="primary.500"
-        onPress={onToggle}
+        onPress={handleFabPress}
         position="absolute"
         bottom={10}
         right={10}
       />
       {isOpen ? (
-        <Animated.View
-          style={[styles.menu, animatedMenuStyles]}
-          onLayout={menuOnLayout}
-        >
+        <View style={[styles.menu]}>
           <VStack space={1}>
             {options.map(({ iconName, label, to }) => (
               <OptionButton
@@ -77,7 +55,7 @@ export const Fab: React.FC<FabProps> = ({ options, size = defaultSize }) => {
               />
             ))}
           </VStack>
-        </Animated.View>
+        </View>
       ) : null}
     </>
   );
@@ -86,6 +64,7 @@ export const Fab: React.FC<FabProps> = ({ options, size = defaultSize }) => {
 const styles = StyleSheet.create({
   menu: {
     position: 'absolute',
-    left: defaultSize * -4,
+    bottom: 10,
+    right: 10,
   },
 });
